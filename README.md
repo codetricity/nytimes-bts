@@ -8,6 +8,8 @@ You can get your own API key from https://developer.nytimes.com/
 
 Put your own NYTimes API key into the file `js/api-key.js`.
 
-  exports.myKey = function() {
-    return 'the key goes here';  
-  }
+
+    exports.myKey = function() {
+      return 'the key goes here';  
+    }
+
