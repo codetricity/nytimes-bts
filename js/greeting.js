@@ -25,30 +25,36 @@ function mainGreeting() {
       console.log(eachArticle.snippet);
       console.log(eachArticle.web_url);
       eachArticle.multimedia.forEach((eachMedia) => {
-        let imageUrl = "https://www.nytimes.com/" + eachMedia.url;
-        console.log(imageUrl);
+        if (eachMedia.subType === 'superJumbo') {
+          let imageUrl = "https://www.nytimes.com/" + eachMedia.url;
+          console.log(imageUrl);
+        }
+
+        
       });
       console.log('---');
       listOfArticles = `${listOfArticles} 
         <p>
-          <a href="${eachArticle.web_url}">
-          ${eachArticle.snippet}
-          </a>
+        ${eachArticle.snippet}
+        <br>
+        ${eachArticle.web_url}
           <br>
         </p>
+        <hr>
         `;
 
         eachArticle.multimedia.forEach((eachImage) => {
-          let imageUrl = "https://www.nytimes.com/" + eachImage.url;
-          listOfArticles = `${listOfArticles}
-            <div>
-            <img src='${imageUrl}'>
-            </div>
-            `;
+          if (eachImage.subType === 'superJumbo') {
+            let imageUrl = "https://www.nytimes.com/" + eachImage.url;
+            listOfArticles = `${listOfArticles}
+              <div>
+              <img src='${imageUrl}'>
+              </div>
+              `;
+          }
         });
     });
     
     responseArea.innerHTML = listOfArticles;
-    console.log('this is the main greeting from the button press');
   });
 }
