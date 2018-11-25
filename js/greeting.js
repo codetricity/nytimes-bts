@@ -48,7 +48,7 @@ function mainGreeting() {
             let imageUrl = "https://www.nytimes.com/" + eachImage.url;
             listOfArticles = `${listOfArticles}
               <div>
-              <img src='${imageUrl}'>
+              <img src='${imageUrl}' width="100%">
               </div>
               `;
           }
