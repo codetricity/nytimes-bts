@@ -20,7 +20,7 @@ function mainGreeting() {
   request.get(fullUrl, function (error, response, body) {
     let dataObject = JSON.parse(body);
     let arrayOfArticles = dataObject.response.docs;
-    let listOfArticles;
+    let listOfArticles = '';
     arrayOfArticles.forEach((eachArticle) => {
       console.log(eachArticle.snippet);
       console.log(eachArticle.web_url);
