@@ -1,8 +1,15 @@
+const electron = require('electron');
+const browserWindow = electron.BrowserWindow;
+const ipc = electron.ipcRenderer;
+
 const request = require('request');
 const apiKey = require('./js/api-key');
 
 
 const greetingButton = document.getElementById('greeting-button');
+ipc.on('messageFromMain', (event, message) => {
+  console.log(`message from window 2 sent through main: ${message}`);
+});
 greetingButton.addEventListener('click', mainGreeting);
 
 const responseArea = document.getElementById('response-area');
@@ -37,7 +44,8 @@ function mainGreeting() {
         <p>
         ${eachArticle.snippet}
         <br>
-        ${eachArticle.web_url}
+        <button onclick="showArticle('${eachArticle.web_url}');">View Article</button>
+   
           <br>
         </p>
         <hr>
@@ -57,4 +65,9 @@ function mainGreeting() {
     
     responseArea.innerHTML = listOfArticles;
   });
+}
+
+function showArticle(url) {
+  console.log(url);
+  // let win = new browserWindow({width: 400,  height: 300});
 }
