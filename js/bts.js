@@ -1,5 +1,5 @@
 const electron = require('electron');
-const browserWindow = electron.BrowserWindow;
+const browserWindow = electron.remote.BrowserWindow;
 const ipc = electron.ipcRenderer;
 
 const request = require('request');
@@ -69,5 +69,6 @@ function mainGreeting() {
 
 function showArticle(url) {
   console.log(url);
-  // let win = new browserWindow({width: 400,  height: 300});
+  let win = new browserWindow({width: 1200,  height: 800});
+  win.loadURL(url);
 }
